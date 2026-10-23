@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Portal Django{% endblock %}</title>
-    <!-- Importação do CSS estático -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -15,13 +14,19 @@
 
     <nav>
         <ul>
-            <!-- O menu dinâmico será injetado aqui nas próximas etapas -->
-            <li><a href="/">Início</a></li>
+            {% for item in menu_itens %}
+                {% if item.tipo == 'interno' and item.conteudo %}
+                    <li><a href="{% url 'detalhe_conteudo' item.conteudo.slug %}">{{ item.titulo }}</a></li>
+                {% elif item.tipo == 'externo' %}
+                    <li><a href="{{ item.url_externa }}" target="_blank">{{ item.titulo }}</a></li>
+                {% endif %}
+            {% empty %}
+                <li><a href="/">Início</a></li>
+            {% endfor %}
         </ul>
     </nav>
 
     <main>
-        <!-- Bloco onde o conteúdo dinâmico das páginas será renderizado -->
         {% block content %}
         {% endblock %}
     </main>
