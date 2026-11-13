@@ -8,30 +8,32 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Portal de Conteúdo</h1>
+    <header class="cabecalho" id="cabecalho">
+        <h1>Maedja Andrade e Sarah Beatriz</h1>
     </header>
 
-    <nav>
-        <ul>
-            {% for item in menu_itens %}
-                {% if item.tipo == 'interno' and item.conteudo %}
-                    <li><a href="{% url 'detalhe_conteudo' item.conteudo.slug %}">{{ item.titulo }}</a></li>
-                {% elif item.tipo == 'externo' %}
-                    <li><a href="{{ item.url_externa }}" target="_blank">{{ item.titulo }}</a></li>
-                {% endif %}
-            {% empty %}
-                <li><a href="/">Início</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    <div class="container">
+        <nav class="menulateral" id="menulateral">
+            <ul class="lista-menu">
+                {% for item in menu_itens %}
+                    {% if item.tipo == 'interno' and item.conteudo %}
+                        <li><a class="botao-menu" href="{% url 'detalhe_conteudo' item.conteudo.slug %}">{{ item.titulo }}</a></li>
+                    {% elif item.tipo == 'externo' %}
+                        <li><a class="botao-menu" href="{{ item.url_externa }}" target="_blank">{{ item.titulo }}</a></li>
+                    {% endif %}
+                {% empty %}
+                    <li><a class="botao-menu" href="/">Início</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+        <main class="conteudo" id="conteudo">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
 
-    <footer>
+    <footer class="rodape" id="rodape">
         <p>&copy; Desenvolvido por Sarah e Maedja</p>
     </footer>
 </body>

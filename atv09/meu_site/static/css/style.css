@@ -406,3 +406,56 @@
     
         }
     }
+
+/* Ajustes para o menu dinâmico do Django manter o visual dos botões */
+.cabecalho h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista-menu {
+    list-style: none;
+    padding: 15px 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.botao-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #EAD8B7;
+    border: 1px solid #8A6A4A;
+    color: #4A3728;
+    border-radius: 5px;
+    width: 95px;
+    min-height: 40px;
+    padding: 4px;
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.botao-menu:hover {
+    background-color: #8A6A4A;
+    color: #F5E6D3;
+}
+
+@media screen and (max-width: 768px) {
+    .lista-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
