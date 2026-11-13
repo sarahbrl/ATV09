@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ conteudo.titulo }}{% endblock %}
+
+{% block content %}
+    <!-- O filtro safe é necessário para renderizar as tags HTML vindas da base de dados -->
+    {{ conteudo.conteudo_html|safe }}
+{% endblock %}
